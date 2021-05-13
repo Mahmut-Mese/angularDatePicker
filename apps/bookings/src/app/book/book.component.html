@@ -1,0 +1,22 @@
+<div class="container-top">
+    <div class="container">
+        <div class="form form--book">
+            <div class="form--heading">Book a Date</div>
+            <form>
+                <input type="text" placeholder="name" name="name" [(ngModel)]="booking.name" />
+                <textarea name="reason" placeholder="reason" [(ngModel)]="booking.reason" id="" cols="30" rows="5"></textarea>
+                <book-date-date-picker (dateFunction)="dateFunction($event)"></book-date-date-picker>
+                <button class="button" (click)="addOneBook($event)">Book</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="message book">
+        <ul>
+            <li *ngFor="let book of books" class="bookings">
+                {{ book.name }} booked a meeting for {{ book.dayName }} {{ book.day }} {{ book.month }} {{ book.year }}. Reason: {{ book.reason }}.'
+            </li>
+        </ul>
+    </div>
+</div>
+<br />

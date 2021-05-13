@@ -1,1 +1,2 @@
-export const getGreeting = () => cy.get('h1');
+export const getBookins = () => cy.get('li.bookings');
+export const getAddbBookutton = () => cy.get('button.button');

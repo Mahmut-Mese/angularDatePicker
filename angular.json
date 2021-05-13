@@ -1,176 +1,175 @@
 {
-  "version": 1,
-  "cli": {
-    "defaultCollection": "@nrwl/angular"
-  },
-  "defaultProject": "bookings",
-  "schematics": {
-    "@nrwl/workspace": {
-      "library": {
-        "linter": "tslint"
-      }
+    "version": 1,
+    "cli": {
+        "defaultCollection": "@nrwl/angular"
     },
-    "@nrwl/cypress": {
-      "cypress-project": {
-        "linter": "tslint"
-      }
+    "defaultProject": "bookings",
+    "schematics": {
+        "@nrwl/workspace": {
+            "library": {
+                "linter": "tslint"
+            }
+        },
+        "@nrwl/cypress": {
+            "cypress-project": {
+                "linter": "tslint"
+            }
+        },
+        "@nrwl/node": {
+            "application": {
+                "linter": "tslint"
+            },
+            "library": {
+                "linter": "tslint"
+            }
+        },
+        "@nrwl/nest": {
+            "application": {
+                "linter": "tslint"
+            },
+            "library": {
+                "linter": "tslint"
+            }
+        },
+        "@nrwl/express": {
+            "application": {
+                "linter": "tslint"
+            },
+            "library": {
+                "linter": "tslint"
+            }
+        },
+        "@nrwl/angular:application": {
+            "style": "scss",
+            "linter": "tslint",
+            "unitTestRunner": "jest",
+            "e2eTestRunner": "cypress"
+        },
+        "@nrwl/angular:library": {
+            "style": "scss",
+            "linter": "tslint",
+            "unitTestRunner": "jest"
+        },
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
     },
-    "@nrwl/node": {
-      "application": {
-        "linter": "tslint"
-      },
-      "library": {
-        "linter": "tslint"
-      }
-    },
-    "@nrwl/nest": {
-      "application": {
-        "linter": "tslint"
-      },
-      "library": {
-        "linter": "tslint"
-      }
-    },
-    "@nrwl/express": {
-      "application": {
-        "linter": "tslint"
-      },
-      "library": {
-        "linter": "tslint"
-      }
-    },
-    "@nrwl/angular:application": {
-      "style": "scss",
-      "linter": "tslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "style": "scss",
-      "linter": "tslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "scss"
-    }
-  },
-  "projects": {
-    "bookings": {
-      "projectType": "application",
-      "root": "apps/bookings",
-      "sourceRoot": "apps/bookings/src",
-      "prefix": "book-date",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/apps/bookings",
-            "index": "apps/bookings/src/index.html",
-            "main": "apps/bookings/src/main.ts",
-            "polyfills": "apps/bookings/src/polyfills.ts",
-            "tsConfig": "apps/bookings/tsconfig.app.json",
-            "aot": true,
-            "assets": [
-              "apps/bookings/src/favicon.ico",
-              "apps/bookings/src/assets"
-            ],
-            "styles": ["apps/bookings/src/styles.scss"],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/bookings/src/environments/environment.ts",
-                  "with": "apps/bookings/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+    "projects": {
+        "bookings": {
+            "projectType": "application",
+            "root": "apps/bookings",
+            "sourceRoot": "apps/bookings/src",
+            "prefix": "book-date",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/apps/bookings",
+                        "index": "apps/bookings/src/index.html",
+                        "main": "apps/bookings/src/main.ts",
+                        "polyfills": "apps/bookings/src/polyfills.ts",
+                        "tsConfig": "apps/bookings/tsconfig.app.json",
+                        "aot": true,
+                        "assets": [
+                            "apps/bookings/src/favicon.ico",
+                            "apps/bookings/src/assets"
+                        ],
+                        "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css",
+                            "apps/bookings/src/styles.scss"
+                        ],
+                        "scripts": []
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [{
+                                "replace": "apps/bookings/src/environments/environment.ts",
+                                "with": "apps/bookings/src/environments/environment.prod.ts"
+                            }],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [{
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
+                                }
+                            ]
+                        }
+                    }
                 },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "bookings:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "bookings:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "bookings:build"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "apps/bookings/tsconfig.app.json",
+                            "apps/bookings/tsconfig.spec.json",
+                            "apps/bookings/tsconfig.editor.json"
+                        ],
+                        "exclude": ["**/node_modules/**", "!apps/bookings/**/*"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/apps/bookings"],
+                    "options": {
+                        "jestConfig": "apps/bookings/jest.config.js",
+                        "passWithNoTests": true
+                    }
                 }
-              ]
             }
-          }
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "bookings:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "bookings:build:production"
+        "bookings-e2e": {
+            "root": "apps/bookings-e2e",
+            "sourceRoot": "apps/bookings-e2e/src",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@nrwl/cypress:cypress",
+                    "options": {
+                        "cypressConfig": "apps/bookings-e2e/cypress.json",
+                        "tsConfig": "apps/bookings-e2e/tsconfig.e2e.json",
+                        "devServerTarget": "bookings:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "bookings:serve:production"
+                        }
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": ["apps/bookings-e2e/tsconfig.e2e.json"],
+                        "exclude": ["**/node_modules/**", "!apps/bookings-e2e/**/*"]
+                    }
+                }
             }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "bookings:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/bookings/tsconfig.app.json",
-              "apps/bookings/tsconfig.spec.json",
-              "apps/bookings/tsconfig.editor.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/bookings/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/bookings"],
-          "options": {
-            "jestConfig": "apps/bookings/jest.config.js",
-            "passWithNoTests": true
-          }
         }
-      }
-    },
-    "bookings-e2e": {
-      "root": "apps/bookings-e2e",
-      "sourceRoot": "apps/bookings-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/bookings-e2e/cypress.json",
-            "tsConfig": "apps/bookings-e2e/tsconfig.e2e.json",
-            "devServerTarget": "bookings:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "bookings:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/bookings-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/bookings-e2e/**/*"]
-          }
-        }
-      }
     }
-  }
 }
